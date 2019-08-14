@@ -18,8 +18,7 @@ export default class form_jasa extends Component {
     save(){
         let data =  serialize(document.getElementById('pelanggan') ,{hash: true});
         let proses = {
-            harga_jual1: rupiahToNumber(data.harga_jual1),
-            harga_jual2: rupiahToNumber(data.harga_jual2) ,
+            harga: rupiahToNumber(data.harga),
             hpp: rupiahToNumber(data.hpp),
             jenis: data.jenis,
             kode_jasa: data.kode_jasa,
@@ -83,12 +82,8 @@ export default class form_jasa extends Component {
                                 <Input type='text' name='hpp' id='hpp' onKeyUp={(e)=> inputRupiah('hpp',e.target.value) } defaultValue={formatRupiah(edit.hpp ,'')}/>
                             </FormGroup>
                             <FormGroup>
-                                <Label for='harga_jual1'>Harga Jual 1</Label>
-                                <Input type='text' name='harga_jual1' id='harga_jual1' onKeyUp={(e)=> inputRupiah('harga_jual1',e.target.value) } defaultValue={formatRupiah(edit.harga_jual1,'')}/>
-                            </FormGroup>
-                            <FormGroup>
-                                <Label for='harga_jual2'>Harga Jual 2</Label>
-                                <Input type='text' name='harga_jual2' id='harga_jual2' onKeyUp={(e)=> inputRupiah('harga_jual2',e.target.value) } defaultValue={formatRupiah(edit.harga_jual2,'')}/>
+                                <Label for='harga'>Harga Jual 1</Label>
+                                <Input type='text' name='harga' id='harga' onKeyUp={(e)=> inputRupiah('harga',e.target.value) } defaultValue={formatRupiah(edit.harga,'')}/>
                             </FormGroup>
                         </div>
                         :
@@ -122,12 +117,8 @@ export default class form_jasa extends Component {
                                 <Input type='text' name='hpp' id='hpp' onKeyUp={(e)=> inputRupiah('hpp',e.target.value) }/>
                             </FormGroup>
                             <FormGroup>
-                                <Label for='harga_jual1'>Harga Jual 1</Label>
-                                <Input type='text' name='harga_jual1' id='harga_jual1' onKeyUp={(e)=> inputRupiah('harga_jual1',e.target.value) }/>
-                            </FormGroup>
-                            <FormGroup>
-                                <Label for='harga_jual2'>Harga Jual 2</Label>
-                                <Input type='text' name='harga_jual2' id='harga_jual2' onKeyUp={(e)=> inputRupiah('harga_jual2',e.target.value) }/>
+                                <Label for='harga'>Harga</Label>
+                                <Input type='text' name='harga' id='harga' onKeyUp={(e)=> inputRupiah('harga',e.target.value) }/>
                             </FormGroup>
                         </div>
                     }

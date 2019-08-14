@@ -1,6 +1,5 @@
 import Dashboard from "views/Dashboard/Dashboard";
 import Jenisbiaya from 'views/Jenis_biaya/list_jenisbiaya';
-import Pelanggan from 'views/Pelanggan/list_pelanggan';
 import Pengeluaran from 'views/Pengeluaran/list_pengeluaran';
 import Penjualan from 'views/Penjualan/list_penjualan';
 import Petugas from 'views/Petugas Desain/list_petugasa';
@@ -28,14 +27,6 @@ var dashRoutes = [
     component: Auth(Dashboard),
     layout: "/admin",
     group: 'Dashboard'
-  },
-  {
-    path: "/pelanggan",
-    name: "pelanggan",
-    icon: "business_badge",
-    component: Auth(Pelanggan),
-    layout: "/admin",
-    group: 'setup'
   },
   {
     path: "/supplier",

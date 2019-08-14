@@ -8,7 +8,6 @@ import Hotkeys from 'react-hot-keys';
 import cuid from 'cuid';
 import { UncontrolledTooltip } from 'reactstrap';
 import Select from 'react-select';
-import Member from './list_member';
 import Bayar from './form_pembayaran';
 import Jasa from './list_jasa';
 import { msgerror } from "app";
@@ -20,8 +19,6 @@ class Listpenjualan extends React.Component {
     this.state = {
       row:[],
       petugas:[],
-      modal: false,
-      member:[],
       jasa:[],
       modal2: false,
       modal3 : false,
@@ -38,14 +35,11 @@ class Listpenjualan extends React.Component {
     this.deleteRow = this.deleteRow.bind(this);
     this.addRow = this.addRow.bind(this);
     this.save = this.save.bind(this);
-    this.mode = this.mode.bind(this);
-    this.setMember = this.setMember.bind(this);
     this.mode2 = this.mode2.bind(this);
     this.mode3 = this.mode3.bind(this);
     this.setJasa = this.setJasa.bind(this);
     this.hitungTotalHarga = this.hitungTotalHarga.bind(this);
     this.clearAll = this.clearAll.bind(this);
-    this.pickMember = this.pickMember.bind(this);
     this.pickJasa = this.pickJasa.bind(this);
  
   }
@@ -57,29 +51,10 @@ class Listpenjualan extends React.Component {
     document.getElementById(`satuan${idInputJasa}`).value = data.satuan;
     document.getElementById(`jenis${idInputJasa}`).value = data.jenis;
     document.getElementById(`qty${idInputJasa}`).value = '1';
-
-    let cek = document.getElementById('kode_pelanggan').value;
-
-    if (cek === '00') {
-      document.getElementById(`harga${idInputJasa}`).value = formatRupiah(data.harga_jual1 ,'');  
-      document.getElementById(`total${idInputJasa}`).value = formatRupiah(data.harga_jual1 ,'');
-    }else{
-      document.getElementById(`harga${idInputJasa}`).value = formatRupiah(data.harga_jual2,'');
-      document.getElementById(`total${idInputJasa}`).value = formatRupiah(data.harga_jual2 ,'');
-    }
+    document.getElementById(`harga${idInputJasa}`).value = formatRupiah(data.harga ,''); 
 
     this.hitungTotalHarga();
 
-  }
-
-  setMember(kode , nama , alamat , jenis){
-    document.getElementById('nama_pelanggan').value = nama;
-    document.getElementById('kode_pelanggan').value = kode;
-    document.getElementById('alamat').value = alamat;
-  }
-
-  mode(){
-    this.setState({ modal: !this.state.modal });
   }
 
   mode2(){
@@ -101,10 +76,7 @@ class Listpenjualan extends React.Component {
       .then(res  =>{
         this.setState({petugas: res });
       })
-    apiGet('/penjualan/result_data_member')
-      .then(res => {
-        this.setState({member: res });
-      })
+
     apiGet('/penjualan/result_data_jasa')
       .then(res =>{
         this.setState({jasa: res }); 
@@ -270,21 +242,15 @@ class Listpenjualan extends React.Component {
     }) 
   }
 
-  pickMember(e){
-    if (e.keyCode === 17) {
-      this.mode();
-    }
-  }
 
   render() {
-    let { row , petugas , modal , member , jasa , modal2 , modal3 , idInputJasa , total , header , detail} = this.state;
+    let { row , petugas ,  jasa , modal2 , modal3 , idInputJasa , total , header , detail} = this.state;
     return (
       <Hotkeys 
         keyName="shift+a ,shift+s ,f5"
         onKeyUp={this.onKeyDown}
       >
       <Page title={'Penjualan'}>
-        <Member modal={modal} mode={this.mode} member={ member } setMember={this.setMember} />
         <Bayar modal={modal2} mode={this.mode2} header={header} detail={detail} clear={this.clearAll}  />
         <Jasa modal={modal3} mode={this.mode3} jasa={jasa} idinput={idInputJasa} setJasa={this.setJasa}  />
         <Row>
@@ -314,6 +280,8 @@ class Listpenjualan extends React.Component {
                 <Label for='no_nota'>Nota</Label>
                 <Input type='text' name='no_nota' id='no_nota'  readOnly tabIndex='0' />
               </FormGroup>
+            </Col>
+            <Col>
               <FormGroup id='kode_petugas_design'>
                 <Label for='kode_petugas_design'>Petugas Design</Label>
                 <Select options={petugas.map(x => ({
@@ -321,26 +289,6 @@ class Listpenjualan extends React.Component {
                   label: x.nama_petugas
                 }))}
                 name='kode_petugas_design' className='select' id='kode_petugas_design' tabIndex='1'/>
-              </FormGroup>
-            </Col>
-            <Col>
-                <FormGroup >
-                  <Label for='nama_pelanggan'>Nama Pelanggan</Label>
-                  <Input type='text' name='nama_pelanggan' placeholder='Tekan ctrl unutk pilih member' id='nama_pelanggan' onKeyUp={(e)=> this.pickMember(e)} tabIndex='2'/>
-                </FormGroup>
-              <FormGroup>
-                <Label for='alamat'>Alamat</Label>
-                <Input type='text' name='alamat' id='alamat' tabIndex='3' />
-              </FormGroup>
-            </Col>
-            <Col>
-              <FormGroup>
-                <Label for='no_telepon'>No Telp</Label>
-                <Input type='number' name='no_telepon' tabIndex='4'/>
-              </FormGroup>
-              <FormGroup>
-                <Label for='kode_pelanggan'>Kode Pelanggan</Label>
-                <Input type='text' name='kode_pelanggan' id='kode_pelanggan' tabIndex='5' readOnly/>
               </FormGroup>
             </Col>
           </Row>

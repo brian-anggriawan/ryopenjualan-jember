@@ -102,8 +102,7 @@ class Listtarif extends React.Component {
         nama_jasa: x.nama_jasa,
         jenis: x.jenis,
         satuan: x.satuan,
-        harga_jual1: x.harga_jual1,
-        harga_jual2: x.harga_jual2
+        harga_jual1: x.harga,
       })
     ))
     let xls = new XlsExport( data, 'dataJasa');
@@ -160,14 +159,9 @@ class Listtarif extends React.Component {
               text: 'HPP'
             },
             {
-              dataField: 'harga_jual1',
+              dataField: 'harga',
               formatter: this.formatuang,
-              text: 'Harga 1'
-            },
-            {
-              dataField: 'harga_jual2',
-              formatter: this.formatuang,
-              text: 'Harga 2'
+              text: 'Harga'
             },
             {
               dataField: 'id',

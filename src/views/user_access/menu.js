@@ -1,13 +1,5 @@
 let Menu = [
     {
-      path: "/pelanggan",
-      name: "pelanggan",
-      icon: "business_badge",
-      component: 'Auth(Pelanggan)',
-      layout: "/admin",
-      group: 'setup'
-    },
-    {
       path: "/supplier",
       name: "supplier",
       icon: "emoticons_satisfied",
