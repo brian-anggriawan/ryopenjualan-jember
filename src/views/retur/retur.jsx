@@ -25,7 +25,8 @@ export default class retur extends Component {
             kode_pelanggan:'',
             pembayaran: '',
             detail:[],
-            loading: false
+            loading: false,
+            nonota:''
         }
         this.mode1 = this.mode1.bind(this);
         this.mode2 = this.mode2.bind(this);
@@ -115,7 +116,7 @@ export default class retur extends Component {
                      )
                 }
 
-                this.setState({ edit: true , id_penjualan: id , row: copy , pembayaran: status_hutang ,kode_pelanggan:kode_pelanggan });
+                this.setState({ edit: true , id_penjualan: id , row: copy , pembayaran: status_hutang ,kode_pelanggan:kode_pelanggan , nonota: no_nota });
                 this.hitungTotalHarga();
             })
     }
@@ -129,7 +130,8 @@ export default class retur extends Component {
             idInputJasa:'',
             kode_pelanggan:'',
             pembayaran:'',
-            detail:[]
+            detail:[],
+            nonota:''
         })
         document.getElementById('no_nota').value = '';
     }
@@ -228,12 +230,12 @@ export default class retur extends Component {
     
 
     render() {
-        let { modal1 , modal2 , modal3 , row , edit , total , detail , pembayaran , id_penjualan , loading  } = this.state;
+        let { modal1 , modal2 , modal3 , row , edit , total , detail , pembayaran , id_penjualan , loading , nonota  } = this.state;
         return (
             <Page title={'Retur Nota'}>
                 <Nota mode={this.mode1} modal={modal1} proses={this.getDetail} />
                 <Jasa mode={this.mode2} modal={modal2} setJasa={this.setJasa} />
-                <FormBayar mode={this.mode3} modal={modal3} detail={detail} pembayaran={pembayaran} id_penjualan ={id_penjualan} total={total} clear={this.cancel} />
+                <FormBayar mode={this.mode3} modal={modal3} detail={detail} pembayaran={pembayaran} id_penjualan ={id_penjualan} total={total} clear={this.cancel} nonota={nonota} />
                 <Row>
                     <Col>
                         <Input type='text' id='no_nota' className='mt-2' name='no_nota' readOnly />

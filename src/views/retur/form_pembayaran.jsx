@@ -32,11 +32,12 @@ export default class form_pembayaran extends Component {
     }
 
     simpan(){
-        let { id_penjualan , detail , clear , total ,pembayaran  ,mode } = this.props;
+        let { id_penjualan , detail , clear , total ,pembayaran  ,mode , nonota } = this.props;
         let data = Serialize(document.getElementById('header') ,{ hash: true });
         let header = {};
 
             header.id_penjualan = id_penjualan;
+            header.no_nota = nonota;
             header.total_harga = total
             header.bayar = rupiahToNumber(data.bayar || '0');
             header.kembali = pembayaran === '0' ?  rupiahToNumber(data.kembali || '0') : pembayaran === '1' ? '-'+rupiahToNumber(data.kembali || '0') : rupiahToNumber(data.kembali || '0') ;

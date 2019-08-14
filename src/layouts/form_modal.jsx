@@ -13,6 +13,7 @@ class formModal extends React.Component{
             <Modal
                 className = 'modal-dialog-centered'
                 isOpen = {this.props.modal}
+                autoFocus={false}
             >
                 <div className='modal-header'>
                     <h5 className='modal-title' id='exampleModalLabel'>

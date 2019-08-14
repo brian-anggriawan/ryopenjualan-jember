@@ -20,6 +20,11 @@ class Dashboard extends React.Component {
         .then(res =>{
           this.setState({ pemasukan: res })
         });
+
+    apiGet('dashboard/chart_pengeluaran_tahun')
+        .then(res =>{
+          this.setState({ pengeluaran: res })
+        });
         
     apiGet('dashboard/jumlah_pelanggan')
         .then(res =>{
@@ -33,7 +38,7 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    let { pemasukan , pelanggan , penjualan } = this.state;
+    let { pemasukan , pelanggan , penjualan , pengeluaran } = this.state;
 
     console.log(getMounth())
 
@@ -72,7 +77,7 @@ class Dashboard extends React.Component {
                     <CardTitle className="text-uppercase text-muted mb-0">
                       Total pengeluaran
                     </CardTitle>
-                    <span className="h2 font-weight-bold mb-0">{pemasukan.hitung}</span>
+                    <span className="h2 font-weight-bold mb-0">{pengeluaran.hitung}</span>
                   </div>
                   <Col className="col-auto">
                     <div className="bg-red rounded-circle shadow">
@@ -81,7 +86,7 @@ class Dashboard extends React.Component {
                   </Col>
                 </Row>
                 <p className="mt-3 mb-0 text-sm">
-                  <span className="text-nowrap">{`${mounthName(pemasukan.bulan)} ${pemasukan.tahun}`}</span>
+                  <span className="text-nowrap">{`${mounthName(pengeluaran.bulan)} ${pengeluaran.tahun}`}</span>
                 </p>
               </CardBody>
             </Card>
