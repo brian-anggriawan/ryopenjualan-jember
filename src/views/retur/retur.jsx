@@ -66,8 +66,8 @@ export default class retur extends Component {
         document.getElementById(`jenis${idInputJasa}`).value = data.jenis;
         document.getElementById(`qty${idInputJasa}`).value = '1';
 
-        document.getElementById(`harga${idInputJasa}`).value = formatRupiah(data.harga_jasa,'');
-        document.getElementById(`total${idInputJasa}`).value = formatRupiah(data.harga_jasa ,'');
+        document.getElementById(`harga${idInputJasa}`).value = formatRupiah(data.harga_jual,'');
+        document.getElementById(`total${idInputJasa}`).value = formatRupiah(data.harga_jual ,'');
     
 
         this.hitungTotalHarga();

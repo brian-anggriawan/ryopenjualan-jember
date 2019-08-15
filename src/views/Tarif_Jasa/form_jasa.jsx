@@ -18,7 +18,7 @@ export default class form_jasa extends Component {
     save(){
         let data =  serialize(document.getElementById('pelanggan') ,{hash: true});
         let proses = {
-            harga_jasa: rupiahToNumber(data.harga_jasa),
+            harga_jual: rupiahToNumber(data.harga_jual),
             hpp: rupiahToNumber(data.hpp),
             jenis: data.jenis,
             kode_jasa: data.kode_jasa,
@@ -82,8 +82,8 @@ export default class form_jasa extends Component {
                                 <Input type='text' name='hpp' id='hpp' onKeyUp={(e)=> inputRupiah('hpp',e.target.value) } defaultValue={formatRupiah(edit.hpp ,'')}/>
                             </FormGroup>
                             <FormGroup>
-                                <Label for='harga_jasa'>Harga Jual 1</Label>
-                                <Input type='text' name='harga_jasa' id='harga_jasa' onKeyUp={(e)=> inputRupiah('harga_jasa',e.target.value) } defaultValue={formatRupiah(edit.harga,'')}/>
+                                <Label for='harga_jual'>Harga Jual 1</Label>
+                                <Input type='text' name='harga_jual' id='harga_jual' onKeyUp={(e)=> inputRupiah('harga_jual',e.target.value) } defaultValue={formatRupiah(edit.harga,'')}/>
                             </FormGroup>
                         </div>
                         :
@@ -117,8 +117,8 @@ export default class form_jasa extends Component {
                                 <Input type='text' name='hpp' id='hpp' onKeyUp={(e)=> inputRupiah('hpp',e.target.value) }/>
                             </FormGroup>
                             <FormGroup>
-                                <Label for='harga_jasa'>Harga</Label>
-                                <Input type='text' name='harga_jasa' id='harga_jasa' onKeyUp={(e)=> inputRupiah('harga_jasa',e.target.value) }/>
+                                <Label for='harga_jual'>Harga</Label>
+                                <Input type='text' name='harga_jual' id='harga_jual' onKeyUp={(e)=> inputRupiah('harga_jual',e.target.value) }/>
                             </FormGroup>
                         </div>
                     }

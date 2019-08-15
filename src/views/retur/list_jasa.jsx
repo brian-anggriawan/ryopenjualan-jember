@@ -88,7 +88,7 @@ export default class list_nota extends Component {
                         text: 'Satuan'
                     },
                     {
-                        dataField: 'harga_jasa',
+                        dataField: 'harga_jual',
                         formatter: this.rupiah,
                         text: 'Harga'
                     }

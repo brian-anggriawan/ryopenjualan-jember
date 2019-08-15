@@ -51,8 +51,8 @@ class Listpenjualan extends React.Component {
     document.getElementById(`satuan${idInputJasa}`).value = data.satuan;
     document.getElementById(`jenis${idInputJasa}`).value = data.jenis;
     document.getElementById(`qty${idInputJasa}`).value = '1';
-    document.getElementById(`harga${idInputJasa}`).value = formatRupiah(data.harga_jasa ,''); 
-    document.getElementById(`total${idInputJasa}`).value = formatRupiah(data.harga_jasa ,'');
+    document.getElementById(`harga${idInputJasa}`).value = formatRupiah(data.harga_jual ,''); 
+    document.getElementById(`total${idInputJasa}`).value = formatRupiah(data.harga_jual ,'');
     this.hitungTotalHarga();
 
   }
@@ -210,7 +210,7 @@ class Listpenjualan extends React.Component {
         this.setState({ detail: arrayDetail.filter(x => x.kode_jasa !== '') , header: dataHeader });
 
         let count = Object.keys(dataHeader).length;
-        if (count === 9) {
+        if (count === 8) {
           this.mode2();
         }else{
           msgerror('Header Masih ada Yang Kosong')
