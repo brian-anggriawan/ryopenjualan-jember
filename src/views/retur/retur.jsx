@@ -22,7 +22,6 @@ export default class retur extends Component {
             total:0,
             id_penjualan: '',
             idInputJasa:'',
-            kode_pelanggan:'',
             pembayaran: '',
             detail:[],
             loading: false,
@@ -60,28 +59,22 @@ export default class retur extends Component {
     }
 
     setJasa(data){
-        let { idInputJasa , kode_pelanggan } = this.state;
+        let { idInputJasa  } = this.state;
         document.getElementById(`kode${idInputJasa}`).value = data.kode_jasa;
         document.getElementById(`jasa${idInputJasa}`).value = data.nama_jasa;
         document.getElementById(`satuan${idInputJasa}`).value = data.satuan;
         document.getElementById(`jenis${idInputJasa}`).value = data.jenis;
         document.getElementById(`qty${idInputJasa}`).value = '1';
+
+        document.getElementById(`harga${idInputJasa}`).value = formatRupiah(data.harga_jasa,'');
+        document.getElementById(`total${idInputJasa}`).value = formatRupiah(data.harga_jasa ,'');
     
-        let cek = kode_pelanggan;
-    
-        if (cek === '00') {
-          document.getElementById(`harga${idInputJasa}`).value = formatRupiah(data.harga_jual1 ,'');  
-          document.getElementById(`total${idInputJasa}`).value = formatRupiah(data.harga_jual1 ,'');
-        }else{
-          document.getElementById(`harga${idInputJasa}`).value = formatRupiah(data.harga_jual2,'');
-          document.getElementById(`total${idInputJasa}`).value = formatRupiah(data.harga_jual2 ,'');
-        }
-    
+
         this.hitungTotalHarga();
     
       }
 
-    getDetail(id , no_nota , kode_pelanggan , status_hutang){
+    getDetail(id , no_nota , status_hutang){
         document.getElementById('no_nota').value = no_nota;
         apiPostGet('retur/result_nota_detail' , { id_penjualan: id})
             .then(res =>{
@@ -116,7 +109,7 @@ export default class retur extends Component {
                      )
                 }
 
-                this.setState({ edit: true , id_penjualan: id , row: copy , pembayaran: status_hutang ,kode_pelanggan:kode_pelanggan , nonota: no_nota });
+                this.setState({ edit: true , id_penjualan: id , row: copy , pembayaran: status_hutang , nonota: no_nota });
                 this.hitungTotalHarga();
             })
     }
@@ -128,7 +121,6 @@ export default class retur extends Component {
             row:[],
             id_penjualan:'',
             idInputJasa:'',
-            kode_pelanggan:'',
             pembayaran:'',
             detail:[],
             nonota:''

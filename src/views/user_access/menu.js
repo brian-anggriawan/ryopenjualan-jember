@@ -1,13 +1,5 @@
 let Menu = [
     {
-      path: "/supplier",
-      name: "supplier",
-      icon: "emoticons_satisfied",
-      component: 'Auth(Supplier)',
-      layout: "/admin",
-      group: 'setup'
-    },
-    {
       path: "/satuan",
       name: "Satuan",
       icon: "design-2_ruler-pencil",

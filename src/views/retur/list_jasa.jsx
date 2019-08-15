@@ -88,14 +88,9 @@ export default class list_nota extends Component {
                         text: 'Satuan'
                     },
                     {
-                        dataField: 'harga_jual1',
+                        dataField: 'harga_jasa',
                         formatter: this.rupiah,
-                        text: 'Harga 1'
-                    },
-                    {
-                        dataField: 'harga_jual2',
-                        formatter: this.rupiah,
-                        text: 'Harga 2'
+                        text: 'Harga'
                     }
                     ]}                            
                     width={{ width:'300px'}}

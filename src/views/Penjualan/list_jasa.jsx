@@ -80,14 +80,9 @@ export default class list_jasa extends Component {
                         text: 'Satuan'
                     },
                     {
-                        dataField: 'harga_jual1',
+                        dataField: 'harga_jasa',
                         formatter: this.rupiah,
                         text: 'Harga 1'
-                    },
-                    {
-                        dataField: 'harga_jual2',
-                        formatter: this.rupiah,
-                        text: 'Harga 2'
                     }
                     ]}                            
                     width={{ width:'300px'}}

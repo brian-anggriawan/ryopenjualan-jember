@@ -51,8 +51,8 @@ class Listpenjualan extends React.Component {
     document.getElementById(`satuan${idInputJasa}`).value = data.satuan;
     document.getElementById(`jenis${idInputJasa}`).value = data.jenis;
     document.getElementById(`qty${idInputJasa}`).value = '1';
-    document.getElementById(`harga${idInputJasa}`).value = formatRupiah(data.harga ,''); 
-
+    document.getElementById(`harga${idInputJasa}`).value = formatRupiah(data.harga_jasa ,''); 
+    document.getElementById(`total${idInputJasa}`).value = formatRupiah(data.harga_jasa ,'');
     this.hitungTotalHarga();
 
   }
@@ -76,7 +76,6 @@ class Listpenjualan extends React.Component {
       .then(res  =>{
         this.setState({petugas: res });
       })
-
     apiGet('/penjualan/result_data_jasa')
       .then(res =>{
         this.setState({jasa: res }); 
@@ -242,9 +241,8 @@ class Listpenjualan extends React.Component {
     }) 
   }
 
-
   render() {
-    let { row , petugas ,  jasa , modal2 , modal3 , idInputJasa , total , header , detail} = this.state;
+    let { row , petugas  , jasa , modal2 , modal3 , idInputJasa , total , header , detail} = this.state;
     return (
       <Hotkeys 
         keyName="shift+a ,shift+s ,f5"
@@ -280,8 +278,6 @@ class Listpenjualan extends React.Component {
                 <Label for='no_nota'>Nota</Label>
                 <Input type='text' name='no_nota' id='no_nota'  readOnly tabIndex='0' />
               </FormGroup>
-            </Col>
-            <Col>
               <FormGroup id='kode_petugas_design'>
                 <Label for='kode_petugas_design'>Petugas Design</Label>
                 <Select options={petugas.map(x => ({
@@ -289,6 +285,22 @@ class Listpenjualan extends React.Component {
                   label: x.nama_petugas
                 }))}
                 name='kode_petugas_design' className='select' id='kode_petugas_design' tabIndex='1'/>
+              </FormGroup>
+            </Col>
+            <Col>
+                <FormGroup >
+                  <Label for='nama_pelanggan'>Nama Pelanggan</Label>
+                  <Input type='text' name='nama_pelanggan' id='nama_pelanggan'  tabIndex='2'/>
+                </FormGroup>
+              <FormGroup>
+                <Label for='alamat'>Alamat</Label>
+                <Input type='text' name='alamat' id='alamat' tabIndex='3' />
+              </FormGroup>
+            </Col>
+            <Col>
+              <FormGroup>
+                <Label for='no_telepon'>No Telp</Label>
+                <Input type='number' name='no_telepon' tabIndex='4'/>
               </FormGroup>
             </Col>
           </Row>

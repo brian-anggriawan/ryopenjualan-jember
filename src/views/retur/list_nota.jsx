@@ -29,7 +29,7 @@ export default class list_nota extends Component {
         let { proses , mode } = this.props;
         let { nota } = this.state;
         let data = nota.filter(x => x.id === id)[0];
-        proses(id , data.no_nota , data.kode_pelanggan , data.status_hutang);
+        proses(id , data.no_nota , data.status_hutang);
         this.setState({ value:''});
         mode();
     }

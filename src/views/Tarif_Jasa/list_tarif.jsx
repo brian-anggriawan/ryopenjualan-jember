@@ -159,7 +159,7 @@ class Listtarif extends React.Component {
               text: 'HPP'
             },
             {
-              dataField: 'harga',
+              dataField: 'harga_jasa',
               formatter: this.formatuang,
               text: 'Harga'
             },
