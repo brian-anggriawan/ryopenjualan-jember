@@ -205,7 +205,7 @@ export let msgdialog = (msg)=>{
 
 /* API Back end */
 
-export let urlServer = 'http://ababilsoft.com/ryotextile/ryotextile_api/';
+export let urlServer = 'http://ababilsoft.com/ryojember/ryojember_api/';
 
 export let apiGet = (url) =>{
     return axios.get(`${urlServer}/${url}`)
